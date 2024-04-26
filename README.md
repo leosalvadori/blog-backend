@@ -46,13 +46,17 @@ git clone https://github.com/leosalvadori/blog-backend.git
 cd blog-backend
 ```
 
-2. Build the Docker image:
+2. Create a *`.env`* at the same level of manage.py
+
+3. Copy *`.env_example`* data to *`.env`* file
+
+4. Build the Docker image:
 
 ```sh
 docker-compose build
 ```
 
-3. Run the Docker containers:
+5. Run the Docker containers:
 
 ```sh
 docker-compose up
@@ -62,12 +66,18 @@ The application will be available at `http://localhost:8000`.
 
 ### Database
 
-This application uses PostgreSQL as its database. The default database name, user, and password are all 'postgres'. You can change these in the `DATABASES` setting in [`blog/settings.py`](blog/settings.py).
+This application uses PostgreSQL as its database. The default database name, user, and password are all 'postgres'. You can change these in the `DATABASES` setting in `.env` file.
 
 ## Migrate the DB
 
 ```sh
 docker-compose run web python manage.py migrate
+```
+
+## Create a Django admin superuser
+
+```sh
+docker-compose run web python manage.py createsuperuser
 ```
 
 ## Testing
