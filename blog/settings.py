@@ -33,7 +33,7 @@ DEBUG = True
 if 'DEV' in os.environ:
     ALLOWED_HOSTS = ['*']
 else:
-    ALLOWED_HOSTS = ['.awsapprunner.com']
+    ALLOWED_HOSTS = ['*.awsapprunner.com']
 
 # Application definition
 
