@@ -16,6 +16,7 @@ class Post(models.Model):
     content = models.TextField(null=True, blank=True)
     status = models.CharField(max_length=20, choices=STATE_MAPPING, default='draft')
     deleted = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_created=True, editable=False, auto_now_add=True, db_index=True)
 
     def __str__(self):
         return f'{self.user.username} - {self.title}'
