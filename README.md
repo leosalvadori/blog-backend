@@ -8,6 +8,28 @@ This is the backend for a blog application built with Django and Django Rest Fra
 - CRUD operations for blog posts
 - Commenting on blog posts
 
+## URLs
+
+This project includes the following URLs:
+
+1. Authentication - [authentication/urls.py](authentication/urls.py)
+
+- *`api/v1/authentication/token/:`* Obtain a pair of JWT tokens (access and refresh).
+- *`api/v1/authentication/token/refresh/:`* Refresh the JWT token.
+- *`api/v1/authentication/token/verify/:`* Verify the JWT token.
+- *`api/v1/authentication/register/:`* Register a new user.
+
+2. Posts - [posts/urls.py](posts/urls.py)
+
+- *`api/v1/posts/:`* List all posts.
+- *`api/v1/create-post/:`* Create a new post.
+- *`api/v1/posts/<int:pk>/delete/:`* Delete a post with the given pk (primary key).
+
+3. Comments - [comments/urls.py](comments/urls.py)
+
+- *`api/v1/posts/<int:pk>/add_comment/:`* Add a comment to the post with the given pk.
+- *`api/v1/posts/<int:pk>/comments/:`* List all comments for the post with the given pk.
+
 ## Setup
 
 ### Requirements
@@ -20,5 +42,38 @@ This is the backend for a blog application built with Django and Django Rest Fra
 1. Clone the repository:
 
 ```sh
-git clone https://github.com/yourusername/blog-backend.git
+git clone https://github.com/leosalvadori/blog-backend.git
 cd blog-backend
+```
+
+2. Build the Docker image:
+
+```sh
+docker-compose build
+```
+
+3. Run the Docker containers:
+
+```sh
+docker-compose up
+```
+
+The application will be available at `http://localhost:8000`.
+
+### Database
+
+This application uses PostgreSQL as its database. The default database name, user, and password are all 'postgres'. You can change these in the `DATABASES` setting in [`blog/settings.py`](blog/settings.py).
+
+## Migrate the DB
+
+```sh
+docker-compose run web python manage.py migrate
+```
+
+## Testing
+
+To run the tests, use the following command:
+
+```sh
+docker-compose run web python manage.py test
+```
