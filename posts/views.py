@@ -1,6 +1,6 @@
 from posts.models import Post
 from rest_framework import generics
-from posts.serializers import PostSerializer
+from posts.serializers import PostSerializer, PostStatusUpdateSerializer
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.exceptions import PermissionDenied
 
@@ -23,6 +23,16 @@ class PostCreateView(generics.CreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
+
+
+class PostUpdateView(generics.UpdateAPIView):
+    permission_classes = [IsAuthenticated]
+    queryset = Post.objects.all()
+    serializer_class = PostStatusUpdateSerializer
+
+    def get_queryset(self):
+        user = self.request.user
+        return Post.objects.filter(user=user)
 
 
 class DeletePostView(generics.DestroyAPIView):

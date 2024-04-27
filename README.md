@@ -14,21 +14,22 @@ This project includes the following URLs:
 
 1. Authentication - [authentication/urls.py](authentication/urls.py)
 
-- *`api/v1/authentication/token/:`* Obtain a pair of JWT tokens (access and refresh).
-- *`api/v1/authentication/token/refresh/:`* Refresh the JWT token.
-- *`api/v1/authentication/token/verify/:`* Verify the JWT token.
-- *`api/v1/authentication/register/:`* Register a new user.
+- *`api/v1/authentication/token/`*: Obtain a pair of JWT tokens (access and refresh).
+- *`api/v1/authentication/token/refresh/`*: Refresh the JWT token.
+- *`api/v1/authentication/token/verify/`*: Verify the JWT token.
+- *`api/v1/authentication/register/`*: Register a new user.
 
 2. Posts - [posts/urls.py](posts/urls.py)
 
-- *`api/v1/posts/:`* List all posts.
-- *`api/v1/create-post/:`* Create a new post.
-- *`api/v1/posts/<int:pk>/delete/:`* Delete a post with the given pk (primary key).
+- *`api/v1/posts/`*: List all posts.
+- *`api/v1/posts/create/`*: Create a new post.
+- *`api/v1/posts/<int:pk>/update/`*: Update a post.
+- *`api/v1/posts/<int:pk>/delete/`*: Delete a post with the given pk (primary key).
 
 3. Comments - [comments/urls.py](comments/urls.py)
 
-- *`api/v1/posts/<int:pk>/add_comment/:`* Add a comment to the post with the given pk.
-- *`api/v1/posts/<int:pk>/comments/:`* List all comments for the post with the given pk.
+- *`api/v1/posts/<int:pk>/add_comment/`*: Add a comment to the post with the given pk.
+- *`api/v1/posts/<int:pk>/comments/`*: List all comments for the post with the given pk.
 
 ## Setup
 
