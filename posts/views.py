@@ -13,7 +13,7 @@ class PostListView(generics.ListAPIView):
         user_posts = self.request.query_params.get('my_posts', None)
         if user_posts is not None and self.request.user.is_authenticated:
             return Post.objects.filter(user=self.request.user)
-        return Post.objects.all()
+        return Post.objects.filter(status='published')
 
 
 class PostCreateView(generics.CreateAPIView):
