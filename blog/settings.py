@@ -40,21 +40,12 @@ else:
     CORS_ORIGIN_ALLOW_ALL = True
 
     CORS_ALLOW_CREDENTIALS = True
-    
+
     CSRF_TRUSTED_ORIGINS = ['https://*.awsapprunner.com', 'https://*.127.0.0.1', 'https://*.*.awsapprunner.com']
 
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-    CORS_REPLACE_HTTPS_REFERER = True
-
     CSRF_COOKIE_DOMAIN = 'awsapprunner.com'
-
-    CORS_ORIGIN_WHITELIST = (
-        'https://fdps7qnhai.us-east-1.awsapprunner.com/',
-        'fdps7qnhai.us-east-1.awsapprunner.com',
-        'us-east-1.awsapprunner.com',
-        'awsapprunner.com',
-    )
 
 # Application definition
 
@@ -65,6 +56,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'rest_framework',
     'rest_framework_simplejwt',
     'posts',
@@ -76,6 +68,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -103,6 +96,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'blog.wsgi.application'
 
+CORS_ALLOW_ALL_ORIGINS = True
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
