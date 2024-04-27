@@ -21,4 +21,6 @@ COPY . /backend/
 # Collect static files
 RUN python manage.py collectstatic --noinput
 
+RUN python manage.py migrate
+
 CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--workers", "2", "blog.wsgi"]

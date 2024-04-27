@@ -33,7 +33,28 @@ DEBUG = True
 if 'DEV' in os.environ:
     ALLOWED_HOSTS = ['*']
 else:
-    ALLOWED_HOSTS = ['*.awsapprunner.com']
+    ALLOWED_HOSTS = ['fdps7qnhai.us-east-1.awsapprunner.com', '.awsapprunner.com']
+
+    CORS_ALLOW_CREDENTIALS = True
+
+    CORS_ORIGIN_ALLOW_ALL = True
+
+    CORS_ALLOW_CREDENTIALS = True
+    
+    CSRF_TRUSTED_ORIGINS = ['https://*.awsapprunner.com', 'https://*.127.0.0.1', 'https://*.*.awsapprunner.com']
+
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+    CORS_REPLACE_HTTPS_REFERER = True
+
+    CSRF_COOKIE_DOMAIN = 'awsapprunner.com'
+
+    CORS_ORIGIN_WHITELIST = (
+        'https://fdps7qnhai.us-east-1.awsapprunner.com/',
+        'fdps7qnhai.us-east-1.awsapprunner.com',
+        'us-east-1.awsapprunner.com',
+        'awsapprunner.com',
+    )
 
 # Application definition
 
