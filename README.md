@@ -23,13 +23,13 @@ This project includes the following URLs:
 
 - *`api/v1/posts/`*: List all posts.
 - *`api/v1/posts/create/`*: Create a new post.
-- *`api/v1/posts/<int:pk>/update/`*: Update a post.
-- *`api/v1/posts/<int:pk>/delete/`*: Delete a post with the given pk (primary key).
+- [PATCH]*`api/v1/posts/<int:pk>/`*: Update a post.
+- [DELETE]*`api/v1/posts/<int:pk>/`*: Delete a post with the given pk (primary key).
 
 3. Comments - [comments/urls.py](comments/urls.py)
 
-- *`api/v1/posts/<int:pk>/add_comment/`*: Add a comment to the post with the given pk.
-- *`api/v1/posts/<int:pk>/comments/`*: List all comments for the post with the given pk.
+- *`api/v1/posts/<int:pk>/comments/create/`*: Add a comment to the post with the given pk.
+- *`api/v1/posts/<int:pk>/comments/list/`*: List all comments for the post with the given pk.
 
 ## Setup
 

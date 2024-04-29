@@ -1,11 +1,10 @@
 from posts.models import Post
 from rest_framework import generics
-from posts.serializers import PostSerializer, PostStatusUpdateSerializer
+from posts.serializers import PostSerializer
 from rest_framework.permissions import AllowAny, IsAuthenticated
-from rest_framework.exceptions import PermissionDenied
 
 
-class PostListView(generics.ListAPIView):
+class PostListAPIView(generics.ListAPIView):
     permission_classes = [AllowAny]
     serializer_class = PostSerializer
 
@@ -16,7 +15,7 @@ class PostListView(generics.ListAPIView):
         return Post.objects.filter(status='published')
 
 
-class PostCreateView(generics.CreateAPIView):
+class PostCreateAPIView(generics.CreateAPIView):
     permission_classes = [IsAuthenticated]
     queryset = Post.objects.all()
     serializer_class = PostSerializer
@@ -25,22 +24,11 @@ class PostCreateView(generics.CreateAPIView):
         serializer.save(user=self.request.user)
 
 
-class PostUpdateView(generics.UpdateAPIView):
-    permission_classes = [IsAuthenticated]
-    queryset = Post.objects.all()
-    serializer_class = PostStatusUpdateSerializer
-
-    def get_queryset(self):
-        user = self.request.user
-        return Post.objects.filter(user=user)
-
-
-class DeletePostView(generics.DestroyAPIView):
+class PostRetrieveUpdateDeleteAPIView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsAuthenticated]
     queryset = Post.objects.all()
     serializer_class = PostSerializer
 
-    def perform_destroy(self, instance):
-        if instance.user != self.request.user:
-            raise PermissionDenied("Permission denied!")
-        instance.delete()
+    def get_queryset(self):
+        user = self.request.user
+        return Post.objects.filter(user=user)
